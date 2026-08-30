@@ -41,7 +41,7 @@ export default function BottomNav() {
           <a className="bottomnav-social-link" href="https://facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
             <FacebookIcon />
           </a>
-          <a className="bottomnav-social-link" href="mailto:hello@tschoolsu.org" aria-label="Email">
+          <a className="bottomnav-social-link" href="mailto:studentcouncil@tschool.tp.edu.tw" aria-label="Email">
             <EmailIcon />
           </a>
         </div>
