@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './TabBar.css'
 
 interface TabBarProps {
+  active: string
   onNavigate: (id: string) => void
 }
 
@@ -13,8 +14,13 @@ const NAV_ITEMS = [
   { id: 'data', label: '公開資料' },
 ]
 
-export default function TabBar({ onNavigate }: TabBarProps) {
+export default function TabBar({ active, onNavigate }: TabBarProps) {
   const [open, setOpen] = useState(false)
+
+  const handleClick = (id: string) => {
+    setOpen(false)
+    onNavigate(id)
+  }
 
   return (
     <header className="tabbar">
@@ -22,13 +28,14 @@ export default function TabBar({ onNavigate }: TabBarProps) {
         <img className="tabbar-logo-img" src="/logotype.svg" alt="" />
       </a>
 
-      <nav className={`tabbar-nav ${open ? 'is-open' : ''}`}>
+      <nav className={`tabbar-nav ${open ? 'is-open' : ''}`} aria-label="主要導覽">
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
             type="button"
-            className="tabbar-link"
-            onClick={() => onNavigate(item.id)}
+            className={`tabbar-link ${active === item.id ? 'is-active' : ''}`}
+            aria-current={active === item.id ? 'page' : undefined}
+            onClick={() => handleClick(item.id)}
           >
             {item.label}
           </button>
@@ -37,7 +44,7 @@ export default function TabBar({ onNavigate }: TabBarProps) {
           法規系統
         </a>
         <a
-          className="tabbar-link tabbar-link-portal"
+          className="tabbar-portal"
           href="https://portal.tschoolsu.org/"
           target="_blank"
           rel="noreferrer"
@@ -48,7 +55,7 @@ export default function TabBar({ onNavigate }: TabBarProps) {
 
       <button
         type="button"
-        className="tabbar-toggle"
+        className={`tabbar-toggle ${open ? 'is-open' : ''}`}
         aria-label="選單"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
