@@ -2,11 +2,12 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './About.css'
 
 const GOALS = [
-  '實踐校園民主與學生自治精神',
-  '暢通本校與學生之意見交流管道',
-  '維護學生權益',
-  '維繫學生之間互動與連結',
-  '推動學生自治相關知能之普及',
+  '維護本校學生權益',
+  '促進本校學生福祉利益',
+  '實踐校園民主',
+  '推動與學生相關之議題倡議',
+  '推動學生權益相關知能普及',
+  '凝聚本校學生社群，維繫學生間之互動與連結',
 ]
 
 export default function About() {
@@ -100,7 +101,7 @@ export default function About() {
           臺北市數位實驗高中學生會
         </h1>
         <p className="about-sub" style={{ animationDelay: '0.45s' }}>
-          「臺北市數位實驗高級中等學校學生自治會」是本校的學生自治組織
+          臺北市數位實驗高級中等學校學生會（T-School SU）為代表本校學生之利益團體
         </p>
 
         <div className="about-goals" style={{ animationDelay: '0.6s' }}>
