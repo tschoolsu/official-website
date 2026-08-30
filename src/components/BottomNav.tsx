@@ -35,10 +35,10 @@ export default function BottomNav() {
           <img className="bottomnav-logo-img" src="/logotype.svg" alt="" />
         </a>
         <div className="bottomnav-social">
-          <a className="bottomnav-social-link" href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <a className="bottomnav-social-link" href="https://www.instagram.com/tschoolsu" target="_blank" rel="noreferrer" aria-label="Instagram">
             <InstagramIcon />
           </a>
-          <a className="bottomnav-social-link" href="https://facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+          <a className="bottomnav-social-link" href="https://www.facebook.com/people/%E6%95%B8%E4%BD%8D%E5%AF%A6%E4%B8%AD%E5%AD%B8%E7%94%9F%E6%9C%83/61579395212418/" target="_blank" rel="noreferrer" aria-label="Facebook">
             <FacebookIcon />
           </a>
           <a className="bottomnav-social-link" href="mailto:studentcouncil@tschool.tp.edu.tw" aria-label="Email">
