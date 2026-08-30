@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import TabBar from './TabBar'
 import About from './About'
 import Organization from './Organization'
+import Members from './Members'
 import Announcements from './Announcements'
 import BottomNav from './BottomNav'
 import PlaceholderPage from './PlaceholderPage'
@@ -9,8 +10,7 @@ import './HomePage.css'
 
 type Page = 'home' | 'org' | 'members' | 'history' | 'data'
 
-const PAGE_TITLES: Record<Exclude<Page, 'home' | 'org'>, string> = {
-  members: '部員介紹',
+const PAGE_TITLES: Record<'history' | 'data', string> = {
   history: '歷史改革',
   data: '公開資料',
 }
@@ -38,7 +38,8 @@ export default function HomePage() {
           </>
         )}
         {page === 'org' && <Organization />}
-        {(page === 'members' || page === 'history' || page === 'data') && (
+        {page === 'members' && <Members />}
+        {(page === 'history' || page === 'data') && (
           <PlaceholderPage title={PAGE_TITLES[page]} />
         )}
       </main>
