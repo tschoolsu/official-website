@@ -12,6 +12,8 @@ function TypeBadge({ type }: { type: string }) {
 export default function Finance() {
   const [reports, setReports] = useState<FinanceReport[]>([])
   const [activeId, setActiveId] = useState<string | null>(null)
+  const [query, setQuery] = useState('')
+  const [type, setType] = useState('全部')
 
   useEffect(() => {
     loadFinanceReports().then(setReports)
@@ -38,6 +40,25 @@ export default function Finance() {
     () => reports.find((r) => r.slug === activeId) ?? null,
     [reports, activeId],
   )
+
+  const allTypes = useMemo(() => {
+    const set = new Set<string>()
+    reports.forEach((r) => set.add(r.type))
+    return ['全部', ...Array.from(set)]
+  }, [reports])
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return reports.filter((r) => {
+      const matchType = type === '全部' || r.type === type
+      const matchQuery =
+        !q ||
+        r.title.toLowerCase().includes(q) ||
+        r.time.toLowerCase().includes(q) ||
+        r.date.toLowerCase().includes(q)
+      return matchType && matchQuery
+    })
+  }, [reports, query, type])
 
   const handleSelect = (slug: string) => {
     window.history.pushState(null, '', `#${slug}`)
@@ -83,14 +104,36 @@ export default function Finance() {
               依學生自治相關知能之普及與公開透明原則，公開本會財務文件。
             </p>
 
+            <div className="finance-tools">
+              <input
+                className="finance-search"
+                type="search"
+                placeholder="搜尋財務報告..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <div className="finance-types">
+                {allTypes.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    className={`finance-type-btn ${type === t ? 'is-active' : ''}`}
+                    onClick={() => setType(t)}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="finance-cards">
-              {reports.map((r, i) => (
+              {filtered.map((r, i) => (
                 <button
                   key={r.slug}
                   type="button"
                   className="finance-card"
                   onClick={() => handleSelect(r.slug)}
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  style={{ animationDelay: `${i * 0.08}s` }}
                 >
                   <div className="finance-card-top">
                     <TypeBadge type={r.type} />
@@ -109,8 +152,8 @@ export default function Finance() {
               ))}
             </div>
 
-            {reports.length === 0 && (
-              <p className="finance-empty">暫無財務報告。</p>
+            {filtered.length === 0 && (
+              <p className="finance-empty">找不到符合條件的財務報告。</p>
             )}
           </div>
         )}
