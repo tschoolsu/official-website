@@ -44,7 +44,7 @@ export const MEMBERS: Member[] = [
   // 數位部
   { department: 5, img: '/member/yushun.jpg', name: '陳友駿', job: '部長', email: '', website: '' },
   { department: 5, img: '/member/ray.png', name: '賴品叡', job: '部員', email: '', website: 'https://ray-tw.com/' },
-  { department: 5, img: '/member/hailey.jpg', name: '張聿懷', job: '部員', email: '', website: '' },
+  { department: 5, img: '/member/hailey.jpg', name: '張聿懷', job: '部員', email: '', website: 'https://www.instagram.com/100124hhh/' },
   { department: 5, img: '/member/lcy.jpg', name: '劉芷妤', job: '部員', email: '', website: '' },
   // 設計部
   { department: 6, img: '/member/default.png', name: '牟語棠', job: '部長', email: '', website: '' },
