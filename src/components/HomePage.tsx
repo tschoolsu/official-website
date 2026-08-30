@@ -6,8 +6,8 @@ import Members from './Members'
 import History from './History'
 import Announcements from './Announcements'
 import FileZone from './FileZone'
+import Finance from './Finance'
 import BottomNav from './BottomNav'
-import PlaceholderPage from './PlaceholderPage'
 import './HomePage.css'
 
 type Page =
@@ -43,7 +43,7 @@ export default function HomePage() {
         {page === 'org' && <Organization />}
         {page === 'members' && <Members />}
         {page === 'history' && <History />}
-        {page === 'data-finance' && <PlaceholderPage title="財務報告" />}
+        {page === 'data-finance' && <Finance />}
         {page === 'data-files' && <FileZone />}
       </main>
       <BottomNav />
