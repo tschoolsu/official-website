@@ -41,7 +41,7 @@ export default function IntroOverlay({ onComplete }: { onComplete: () => void })
   useEffect(() => {
     if (phase !== 'shrink') return
     const stage = stageRef.current
-    const navLogo = document.querySelector<HTMLElement>('.nav-logo')
+    const navLogo = document.querySelector<HTMLElement>('.tabbar-logo')
     if (!stage || !navLogo) return
     const sr = stage.getBoundingClientRect()
     const nr = navLogo.getBoundingClientRect()

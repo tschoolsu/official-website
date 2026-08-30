@@ -1,0 +1,126 @@
+.tabbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  padding: 0 1rem;
+  background: color-mix(in oklch, var(--background) 90%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tabbar-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.tabbar-logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 46vw;
+}
+
+.tabbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tabbar-link {
+  appearance: none;
+  cursor: pointer;
+  border: 2px solid var(--foreground);
+  background: var(--card);
+  color: var(--foreground);
+  border-radius: var(--radius-xl);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 0 var(--foreground);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.tabbar-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 0 var(--foreground);
+}
+
+.tabbar-link:active {
+  transform: translateY(0);
+  box-shadow: 1px 1px 0 0 var(--foreground);
+}
+
+.tabbar-link-portal {
+  background: var(--primary);
+  color: var(--foreground);
+  font-weight: 800;
+}
+
+.tabbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+  background: var(--card);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-xl);
+  box-shadow: 2px 2px 0 0 var(--foreground);
+  cursor: pointer;
+}
+
+.tabbar-toggle-bar {
+  height: 3px;
+  width: 100%;
+  background: var(--foreground);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tabbar-toggle.is-open .tabbar-toggle-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.tabbar-toggle.is-open .tabbar-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.tabbar-toggle.is-open .tabbar-toggle-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .tabbar-toggle {
+    display: flex;
+  }
+
+  .tabbar-nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--background);
+    border-bottom: 2px solid var(--foreground);
+    display: none;
+  }
+
+  .tabbar-nav.is-open {
+    display: flex;
+  }
+
+  .tabbar-link {
+    text-align: left;
+    padding: 0.65rem 1rem;
+  }
+}

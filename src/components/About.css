@@ -1,0 +1,117 @@
+.about {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+  border-bottom: 3px dashed color-mix(in oklch, var(--foreground) 30%, transparent);
+}
+
+.about-dots {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(
+    color-mix(in oklch, var(--foreground) 16%, transparent) 1.4px,
+    transparent 1.4px
+  );
+  background-size: 22px 22px;
+  mask-image: radial-gradient(75% 65% at 50% 0%, black, transparent);
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 44rem;
+}
+
+.about-logo {
+  width: clamp(140px, 26vw, 220px);
+  height: auto;
+  filter: drop-shadow(6px 6px 0 color-mix(in oklch, var(--foreground) 18%, transparent));
+  transition: transform 0.3s ease;
+}
+
+.about-logo:hover {
+  transform: translateY(-4px) rotate(-2deg);
+}
+
+.about-title {
+  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--foreground);
+}
+
+.about-sub {
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  color: var(--muted-foreground);
+  max-width: 34rem;
+}
+
+.about-goals {
+  margin-top: 1rem;
+  width: 100%;
+  background: var(--card);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-2xl);
+  box-shadow: 6px 6px 0 0 var(--foreground);
+  padding: 1.5rem 1.75rem;
+  text-align: left;
+}
+
+.about-goals-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.about-goals-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.about-goal {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: clamp(0.9rem, 2.1vw, 1.05rem);
+  font-weight: 600;
+  color: var(--foreground);
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--ring);
+}
+
+.about-goal-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8em;
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding: 4rem 1rem;
+  }
+
+  .about-goals {
+    padding: 1.25rem 1.25rem;
+  }
+}
