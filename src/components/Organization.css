@@ -1,0 +1,111 @@
+.org {
+  min-height: 100svh;
+  padding: 4rem 1rem;
+  background:
+    linear-gradient(180deg, color-mix(in oklch, var(--secondary) 55%, transparent), var(--background));
+}
+
+.org-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.org-title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.org-title-dot {
+  color: var(--primary);
+}
+
+.org-chart {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-2xl);
+  box-shadow: 6px 6px 0 0 var(--foreground);
+  padding: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.org-chart-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  background: var(--card);
+}
+
+.org-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.org-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.org-card {
+  flex: 1 1 0;
+  min-width: 150px;
+  background: var(--card);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-2xl);
+  box-shadow: 4px 4px 0 0 var(--foreground);
+  padding: 1.1rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.org-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 7px 7px 0 0 var(--foreground);
+}
+
+.org-group-green .org-card {
+  border-top: 8px solid var(--primary);
+}
+
+.org-group-blue .org-card {
+  border-top: 8px solid var(--accent);
+}
+
+.org-group-violet .org-card {
+  border-top: 8px solid color-mix(in oklch, var(--tone-violet-text) 80%, var(--foreground));
+}
+
+.org-card-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+  position: relative;
+  display: inline-block;
+}
+
+.org-group-green .org-card-name {
+  color: var(--tone-green-text);
+}
+.org-group-blue .org-card-name {
+  color: var(--tone-blue-text);
+}
+.org-group-violet .org-card-name {
+  color: var(--tone-violet-text);
+}
+
+.org-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+@media (max-width: 640px) {
+  .org-chart {
+    padding: 0.5rem;
+  }
+}

@@ -1,51 +1,46 @@
 import { useEffect, useState } from 'react'
 import TabBar from './TabBar'
 import About from './About'
+import Organization from './Organization'
 import Announcements from './Announcements'
 import BottomNav from './BottomNav'
+import PlaceholderPage from './PlaceholderPage'
 import './HomePage.css'
 
+type Page = 'home' | 'org' | 'members' | 'history' | 'data'
+
+const PAGE_TITLES: Record<Exclude<Page, 'home' | 'org'>, string> = {
+  members: '部員介紹',
+  history: '歷史改革',
+  data: '公開資料',
+}
+
 export default function HomePage() {
-  const [active, setActive] = useState('home')
+  const [page, setPage] = useState<Page>('home')
 
-  // scroll-spy: highlight the section currently in view
   useEffect(() => {
-    const sections = ['about', 'announcements', 'bottom'].map((id) =>
-      document.getElementById(id),
-    )
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            if (entry.target.id === 'about') setActive('home')
-            else if (entry.target.id === 'announcements') setActive('home')
-            else if (entry.target.id === 'bottom') setActive('home')
-          }
-        }
-      },
-      { rootMargin: '-40% 0px -55% 0px' },
-    )
-
-    sections.forEach((s) => s && observer.observe(s))
-    return () => observer.disconnect()
-  }, [])
+    window.scrollTo({ top: 0 })
+  }, [page])
 
   const handleNavigate = (id: string) => {
-    setActive(id)
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-    // 其餘 tab 留空不採取任何動作
+    setPage(id as Page)
   }
 
   return (
     <div className="home">
       <div id="top" />
-      <TabBar active={active} onNavigate={handleNavigate} />
+      <TabBar active={page} onNavigate={handleNavigate} />
       <main>
-        <About />
-        <Announcements />
+        {page === 'home' && (
+          <>
+            <About />
+            <Announcements />
+          </>
+        )}
+        {page === 'org' && <Organization />}
+        {(page === 'members' || page === 'history' || page === 'data') && (
+          <PlaceholderPage title={PAGE_TITLES[page]} />
+        )}
       </main>
       <BottomNav />
     </div>

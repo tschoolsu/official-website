@@ -1,0 +1,48 @@
+.placeholder {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  background:
+    radial-gradient(
+      color-mix(in oklch, var(--foreground) 14%, transparent) 1.4px,
+      transparent 1.4px
+    );
+  background-size: 22px 22px;
+}
+
+.placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 32rem;
+}
+
+.placeholder-mark {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--foreground);
+  background: var(--card);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-2xl);
+  box-shadow: 5px 5px 0 0 var(--foreground);
+}
+
+.placeholder-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+.placeholder-sub {
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+}
