@@ -3,17 +3,20 @@ import TabBar from './TabBar'
 import About from './About'
 import Organization from './Organization'
 import Members from './Members'
+import History from './History'
 import Announcements from './Announcements'
+import FileZone from './FileZone'
 import BottomNav from './BottomNav'
 import PlaceholderPage from './PlaceholderPage'
 import './HomePage.css'
 
-type Page = 'home' | 'org' | 'members' | 'history' | 'data'
-
-const PAGE_TITLES: Record<'history' | 'data', string> = {
-  history: '歷史改革',
-  data: '公開資料',
-}
+type Page =
+  | 'home'
+  | 'org'
+  | 'members'
+  | 'history'
+  | 'data-finance'
+  | 'data-files'
 
 export default function HomePage() {
   const [page, setPage] = useState<Page>('home')
@@ -39,9 +42,9 @@ export default function HomePage() {
         )}
         {page === 'org' && <Organization />}
         {page === 'members' && <Members />}
-        {(page === 'history' || page === 'data') && (
-          <PlaceholderPage title={PAGE_TITLES[page]} />
-        )}
+        {page === 'history' && <History />}
+        {page === 'data-finance' && <PlaceholderPage title="財務報告" />}
+        {page === 'data-files' && <FileZone />}
       </main>
       <BottomNav />
     </div>

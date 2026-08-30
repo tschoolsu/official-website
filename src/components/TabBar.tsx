@@ -11,14 +11,15 @@ const NAV_ITEMS = [
   { id: 'org', label: '組織架構' },
   { id: 'members', label: '部員介紹' },
   { id: 'history', label: '歷史改革' },
-  { id: 'data', label: '公開資料' },
 ]
 
 export default function TabBar({ active, onNavigate }: TabBarProps) {
   const [open, setOpen] = useState(false)
+  const [dataOpen, setDataOpen] = useState(false)
 
   const handleClick = (id: string) => {
     setOpen(false)
+    setDataOpen(false)
     onNavigate(id)
   }
 
@@ -40,6 +41,35 @@ export default function TabBar({ active, onNavigate }: TabBarProps) {
             {item.label}
           </button>
         ))}
+
+        <div className="tabbar-dropdown">
+          <button
+            type="button"
+            className={`tabbar-link ${active.startsWith('data') ? 'is-active' : ''}`}
+            aria-haspopup="true"
+            aria-expanded={dataOpen}
+            onClick={() => setDataOpen((v) => !v)}
+          >
+            公開資料 <span className="tabbar-caret" aria-hidden="true">▾</span>
+          </button>
+          <div className={`tabbar-dropdown-menu ${dataOpen ? 'is-open' : ''}`}>
+            <button
+              type="button"
+              className="tabbar-dropdown-item"
+              onClick={() => handleClick('data-finance')}
+            >
+              財務報告
+            </button>
+            <button
+              type="button"
+              className="tabbar-dropdown-item"
+              onClick={() => handleClick('data-files')}
+            >
+              檔案專區
+            </button>
+          </div>
+        </div>
+
         <a className="tabbar-link" href="https://law.tschoolsu.org/" target="_blank" rel="noreferrer">
           法規系統
         </a>
