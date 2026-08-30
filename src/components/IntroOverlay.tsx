@@ -10,8 +10,8 @@ const MARK_SIZE = 220
 const SLIDE_MS = 900
 const ASSEMBLE_MS = 350
 const REVEAL_MS = 650
-const HOLD_MS = 300
-const SHRINK_MS = 800
+const HOLD_MS = 150
+const SHRINK_MS = 500
 
 const scale = MARK_SIZE / MARK_W
 const MARK_H_PX = MARK_H * scale
