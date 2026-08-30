@@ -52,15 +52,24 @@ export default function BottomNav() {
       <div className="bottomnav-col bottomnav-right">
         <span className="bottomnav-title">特別感謝</span>
         <div className="bottomnav-thanks">
-          <span className="bottomnav-thanks-item" title="感謝支持">
-            LOGO
-          </span>
-          <span className="bottomnav-thanks-item" title="感謝支持">
-            LOGO
-          </span>
-          <span className="bottomnav-thanks-item" title="感謝支持">
-            LOGO
-          </span>
+          <a
+            className="bottomnav-thanks-item"
+            href="https://hackmd.io/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="HackMD"
+          >
+            <img className="bottomnav-thanks-img" src="/support/hackmd.webp" alt="HackMD" />
+          </a>
+          <a
+            className="bottomnav-thanks-item"
+            href="https://ncse.tw"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="NCSE"
+          >
+            <img className="bottomnav-thanks-img" src="/support/ncse.webp" alt="NCSE" />
+          </a>
         </div>
       </div>
     </footer>

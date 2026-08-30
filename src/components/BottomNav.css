@@ -78,18 +78,22 @@
 .bottomnav-thanks-item {
   display: grid;
   place-items: center;
-  min-width: 72px;
-  height: 48px;
-  padding: 0 0.9rem;
-  background: var(--secondary);
+  height: 52px;
+  padding: 0 0.75rem;
+  background: var(--card);
   border: 2px solid var(--foreground);
   border-radius: var(--radius-md);
   box-shadow: 3px 3px 0 0 var(--foreground);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--muted-foreground);
   transition: all 0.2s ease;
+}
+
+.bottomnav-thanks-img {
+  display: block;
+  max-height: 38px;
+  max-width: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .bottomnav-thanks-item:hover {
