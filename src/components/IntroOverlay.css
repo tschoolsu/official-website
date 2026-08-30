@@ -1,0 +1,132 @@
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transition: opacity 0.6s ease 0.15s;
+}
+
+.intro-overlay.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-stage {
+  --mark-w: 300px;
+  --mark-h: 304px;
+  --gap: 28px;
+  position: relative;
+  width: calc(var(--mark-w) + var(--gap) + var(--text-w, 0px));
+  height: var(--mark-h);
+  will-change: transform;
+}
+
+.intro-stage.shrinking {
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.intro-mark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(calc((var(--text-w, 0px) + var(--gap)) / 2));
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.intro-stage.revealed .intro-mark {
+  transform: translateY(-50%) translateX(0);
+}
+
+.intro-hex {
+  will-change: transform, opacity;
+}
+
+.hex-blue,
+.hex-gloss {
+  animation: hex-in-bl 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.hex-purple {
+  animation: hex-in-br 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.hex-pink {
+  animation: hex-in-r 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes hex-in-bl {
+  from {
+    transform: translate(-60vw, 60vh) scale(1.15);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hex-in-br {
+  from {
+    transform: translate(60vw, 60vh) scale(1.15);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hex-in-r {
+  from {
+    transform: translate(60vw, 0) scale(1.15);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.intro-text {
+  position: absolute;
+  left: calc(var(--mark-w) + var(--gap));
+  top: 50%;
+  transform: translateY(-50%) translateX(30px);
+  opacity: 0;
+  white-space: nowrap;
+  text-align: left;
+  transition:
+    opacity 0.5s ease 0.1s,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.intro-stage.revealed .intro-text {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.intro-stage.shrinking .intro-text {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.text-zh {
+  display: block;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  color: #2b2b33;
+}
+
+.text-en {
+  display: block;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  color: #8a7f96;
+}
