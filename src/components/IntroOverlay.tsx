@@ -25,6 +25,25 @@ type Phase = 'slide' | 'assembled' | 'reveal' | 'shrink'
 export default function IntroOverlay({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<Phase>('slide')
   const stageRef = useRef<HTMLDivElement>(null)
+  const fitRef = useRef<HTMLDivElement>(null)
+  const fitScaleRef = useRef(1)
+
+  // base (unscaled) width of the stage
+  const STAGE_W = MARK_SIZE + GAP + TEXT_W
+
+  // scale the whole intro to fit the viewport width (mobile fix)
+  useEffect(() => {
+    const fit = () => {
+      const el = fitRef.current
+      if (!el) return
+      const s = Math.min(1, (window.innerWidth - 24) / STAGE_W)
+      fitScaleRef.current = s
+      el.style.transform = `translate(-50%, -50%) scale(${s})`
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    return () => window.removeEventListener('resize', fit)
+  }, [STAGE_W])
 
   useEffect(() => {
     const revealStart = SLIDE_MS + ASSEMBLE_MS
@@ -46,8 +65,11 @@ export default function IntroOverlay({ onComplete }: { onComplete: () => void })
     const sr = stage.getBoundingClientRect()
     const nr = navLogo.getBoundingClientRect()
     const s = nr.width / sr.width
-    const dx = nr.left + nr.width / 2 - (sr.left + sr.width / 2)
-    const dy = nr.top + nr.height / 2 - (sr.top + sr.height / 2)
+    const f = fitScaleRef.current
+    // sr is the fit-scaled visual rect; stage's own transform lives in unscaled
+    // space, so the translate must be divided by the fit scale to land correctly.
+    const dx = (nr.left + nr.width / 2 - (sr.left + sr.width / 2)) / f
+    const dy = (nr.top + nr.height / 2 - (sr.top + sr.height / 2)) / f
     stage.style.transform = `translate(${dx}px, ${dy}px) scale(${s})`
   }, [phase])
 
@@ -60,19 +82,21 @@ export default function IntroOverlay({ onComplete }: { onComplete: () => void })
 
   return (
     <div className={`intro-overlay${phase === 'shrink' ? ' fade' : ''}`}>
-      <div
-        ref={stageRef}
-        className={`intro-stage ${phase === 'shrink' ? 'shrinking' : ''}`}
-        style={stageStyle}
-      >
-        <div className={`intro-mark ${phase === 'reveal' || phase === 'shrink' ? 'revealed' : ''}`}>
-          <LogoMark
-            size={MARK_SIZE}
-            hexClass={(id) => `intro-hex hex-${id}`}
-          />
-        </div>
-        <div className="intro-text">
-          <LogotypeText height={TEXT_H} />
+      <div ref={fitRef} className="intro-fit">
+        <div
+          ref={stageRef}
+          className={`intro-stage ${phase === 'shrink' ? 'shrinking' : ''}`}
+          style={stageStyle}
+        >
+          <div className={`intro-mark ${phase === 'reveal' || phase === 'shrink' ? 'revealed' : ''}`}>
+            <LogoMark
+              size={MARK_SIZE}
+              hexClass={(id) => `intro-hex hex-${id}`}
+            />
+          </div>
+          <div className="intro-text">
+            <LogotypeText height={TEXT_H} />
+          </div>
         </div>
       </div>
     </div>
