@@ -65,7 +65,7 @@ export default function History() {
         <h2 className="history-title">
           歷史改革<span className="history-title-dot">.</span>
         </h2>
-        <p className="history-sub">學生自治組織改革的演進時刻</p>
+        <p className="history-sub">學生會改革的演進時刻</p>
 
         <div className="timeline">
           <div className="timeline-line" />

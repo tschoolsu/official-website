@@ -101,7 +101,7 @@ export default function Finance() {
               財務報告<span className="finance-title-dot">.</span>
             </h2>
             <p className="finance-sub">
-              依學生自治相關知能之普及與公開透明原則，公開本會財務文件。
+              本會財務公開文件。
             </p>
 
             <div className="finance-tools">
