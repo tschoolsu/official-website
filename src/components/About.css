@@ -8,10 +8,10 @@
   overflow: hidden;
   border-bottom: 3px dashed color-mix(in oklch, var(--foreground) 30%, transparent);
   background:
-    radial-gradient(60% 70% at 0% 40%, color-mix(in oklch, var(--accent) 16%, transparent), transparent 70%),
-    radial-gradient(55% 70% at 100% 30%, color-mix(in oklch, var(--primary) 14%, transparent), transparent 70%),
-    radial-gradient(55% 60% at 50% 100%, color-mix(in oklch, var(--ring) 22%, transparent), transparent 72%),
-    linear-gradient(105deg, oklch(0.94 0.045 20) 0%, oklch(0.935 0.03 295) 45%, oklch(0.885 0.05 282) 100%);
+    radial-gradient(60% 70% at 0% 40%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 72%),
+    radial-gradient(55% 70% at 100% 30%, color-mix(in oklch, var(--primary) 9%, transparent), transparent 72%),
+    radial-gradient(55% 60% at 50% 100%, color-mix(in oklch, var(--ring) 14%, transparent), transparent 74%),
+    linear-gradient(105deg, oklch(0.975 0.025 20) 0%, oklch(0.97 0.018 295) 45%, oklch(0.94 0.03 282) 100%);
 }
 
 /* grainy noise texture backdrop */
@@ -139,7 +139,8 @@
   font-size: clamp(1.6rem, 4.5vw, 2.5rem);
   font-weight: 800;
   letter-spacing: 0.02em;
-  color: var(--primary);
+  color: oklch(0.55 0.18 286);
+  text-shadow: 0 2px 16px color-mix(in oklch, var(--ring) 45%, transparent);
   opacity: 0;
   transform: translateY(24px);
   animation: about-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -147,7 +148,7 @@
 
 .about.is-visible .about-sub {
   font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-  color: var(--muted-foreground);
+  color: oklch(0.44 0.03 285);
   max-width: 34rem;
   opacity: 0;
   transform: translateY(20px);
