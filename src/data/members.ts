@@ -28,7 +28,7 @@ export const MEMBERS: Member[] = [
   { department: 1, img: '/member/default.png', name: '黃苡媞', job: '副會長', email: '', website: '' },
   // 會本部
   { department: 2, img: '/member/default.png', name: '陳宥彤', job: '秘書長', email: '', website: '' },
-  { department: 2, img: '/member/kaba.jpg', name: '陸加恩', job: '發言人', email: '', website: 'https://youtu.be/KOUipI5339k' },
+  { department: 2, img: '/member/kaba.jpg', name: '陸加恩', job: '發言人', email: '', website: 'https://youtu.be/hSYLrxjcG8c' },
   { department: 2, img: '/member/luketseng.jpg', name: '曾粲然', job: '部員', email: '', website: 'https://www.inaturalist.org/people/luketseng' },
   { department: 2, img: '/member/default.png', name: '蔡宜楨', job: '部員', email: '', website: '' },
   { department: 2, img: '/member/caleb.jpg', name: '王瀚澤', job: '部員', email: '', website: 'https://www.instagram.com/tschool_caleb/' },
