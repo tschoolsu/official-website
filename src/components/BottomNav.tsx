@@ -44,6 +44,9 @@ export default function BottomNav() {
           <img className="bottomnav-logo-img" src="/logotype.svg" alt="" />
         </a>
         <div className="bottomnav-social">
+          <a className="bottomnav-social-link" href="https://youtube.com/@tschoolsu" target="_blank" rel="noreferrer" aria-label="YouTube">
+            <YoutubeIcon />
+          </a>
           <a className="bottomnav-social-link" href="https://www.instagram.com/tschoolsu" target="_blank" rel="noreferrer" aria-label="Instagram">
             <InstagramIcon />
           </a>
@@ -52,9 +55,6 @@ export default function BottomNav() {
           </a>
           <a className="bottomnav-social-link" href="mailto:studentcouncil@tschool.tp.edu.tw" aria-label="Email">
             <EmailIcon />
-          </a>
-          <a className="bottomnav-social-link" href="https://youtube.com/@tschoolsu" target="_blank" rel="noreferrer" aria-label="YouTube">
-            <YoutubeIcon />
           </a>
         </div>
       </div>
